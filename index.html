@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Emmanuel Selicour | Digital Specialist</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Portfolio Emmanuel Selicour - Digital Specialist, Centre d'Appel, Marketing, Informatique | Solutions digitales innovantes et services multilingues.">
+  <meta name="keywords" content="spécialiste digital Haïti, centre d'appel, marketing, développement web, Emmanuel Selicour">
+  <meta property="og:title" content="Emmanuel Selicour | Digital Specialist">
+  <meta property="og:image" content="https://files.catbox.moe/ndiqzk.jpg">
+  <meta name="author" content="Emmanuel Selicour">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="logo-ES.jpg" />
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="modern-nav">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-text">ES</span>
+        <span class="logo-name">Emmanuel Selicour</span>
+      </div>
+      
+      <div class="nav-right">
+        <!-- Language Selector -->
+        <div class="language-selector">
+          <button id="lang-fr" class="lang-btn active">FR</button>
+          <button id="lang-en" class="lang-btn">EN</button>
+          <button id="lang-es" class="lang-btn">ES</button>
+        </div>
+        
+        <!-- Navigation Menu -->
+        <div class="nav-menu">
+          <a href="#bio" class="nav-link">
+            <i class="fas fa-user"></i>
+            <span data-translate="about">À propos</span>
+          </a>
+          <a href="#skills" class="nav-link">
+            <i class="fas fa-tools"></i>
+            <span data-translate="skills">Compétences</span>
+          </a>
+          <a href="#contact" class="nav-link">
+            <i class="fas fa-envelope"></i>
+            <span data-translate="contact">Contact</span>
+          </a>
+        </div>
+        
+        <!-- Dark Mode Toggle -->
+        <button class="dark-mode-toggle" title="Changer mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+      <a href="#bio" class="mobile-nav-link">
+        <i class="fas fa-user"></i>
+        <span data-translate="about">À propos</span>
+      </a>
+      <a href="#skills" class="mobile-nav-link">
+        <i class="fas fa-tools"></i>
+        <span data-translate="skills">Compétences</span>
+      </a>
+      <a href="#contact" class="mobile-nav-link">
+        <i class="fas fa-envelope"></i>
+        <span data-translate="contact">Contact</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar"></div>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-content">
+      <div class="loader-logo">ES</div>
+      <div class="loader-spinner"></div>
+      <p class="loader-text" data-translate="loading">Chargement...</p>
+    </div>
+  </div>
+
+  <!-- Custom Alert Modal -->
+  <div id="customAlert" class="custom-alert">
+    <div class="alert-content">
+      <div class="alert-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <h3 id="alert-title">Message envoyé!</h3>
+      <p id="alert-message">Merci pour votre message. Je vous répondrai dès que possible.</p>
+      <div class="alert-actions">
+        <button id="alert-ok" class="btn btn-primary">OK</button>
+      </div>
+      <button class="close-alert">&times;</button>
+    </div>
+  </div>
+
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="gradient-text" data-translate="name">Emmanuel Selicour</span>
+        </h1>
+        <p class="hero-subtitle" data-translate="title">
+          Digital Specialist | Centre d'Appel | Marketing | Développement Web
+        </p>
+        <p class="hero-description">
+          Création de solutions digitales innovantes avec une approche multilingue et multiculturelle
+        </p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">
+            <i class="fas fa-paper-plane"></i>
+            <span data-translate="contact_me">Me contacter</span>
+          </a>
+          <a href="#skills" class="btn btn-outline">
+            <i class="fas fa-chart-line"></i>
+            <span data-translate="my_skills">Voir mes compétences</span>
+          </a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="image-container">
+          <img src="true-manno.jpg" alt="Emmanuel Selicour" class="profile-image">
+          <div class="image-glow"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </header>
+
+  <!-- ABOUT SECTION -->
+  <section id="bio" class="section about-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" data-translate="about_me">
+          <span class="title-number">01</span>
+          À propos de moi
+        </h2>
+        <p class="section-subtitle">Découvrez mon parcours et ma passion pour le digital</p>
+      </div>
+      
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <h3>Vision</h3>
+          <p data-translate="bio2">
+            Je crois au pouvoir de la connaissance et à la valeur du travail acharné. Mon objectif est de fournir des solutions efficaces et créatives dont tout le monde peut bénéficier.
+          </p>
+        </div>
+        
+        <div class="about-card">
+          <div class="about-icon">
+            <i class="fas fa-bullseye"></i>
+          </div>
+          <h3>Mission</h3>
+          <p>Transformer les idées en solutions digitales performantes avec une approche centrée sur l'utilisateur et les résultats.</p>
+        </div>
+        
+        <div class="about-card">
+          <div class="about-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3>Passion</h3>
+          <p>Innovation technologique, apprentissage continu et création de valeur à travers le digital.</p>
+        </div>
+      </div>
+      
+      <div class="about-content">
+        <div class="about-text">
+          <h3 data-translate="name">Emmanuel "True Manno" Selicour</h3>
+          <p data-translate="bio1">
+            Je suis un jeune professionnel passionné avec de l'expérience dans plusieurs domaines : développement web, centre d'appel, marketing digital, e-commerce et plus encore. Je suis une personne sérieuse, flexible et toujours en apprentissage pour évoluer chaque jour.
+          </p>
+          <div class="about-stats">
+            <div class="stat">
+              <span class="stat-number">5+</span>
+              <span class="stat-label">Domaines d'expertise</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">4</span>
+              <span class="stat-label">Langues</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Engagement</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS SECTION -->
+  <section id="skills" class="section skills-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" data-translate="my_skills">
+          <span class="title-number">02</span>
+          Mes Compétences
+        </h2>
+        <p class="section-subtitle">Expertises techniques et professionnelles</p>
+      </div>
+      
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <h3 data-translate="call_center">Centre d'Appel</h3>
+          </div>
+          <ul class="skill-list">
+            <li><i class="fas fa-check-circle"></i> <span data-translate="skill1">Gestion d'appels clients en français et créole</span></li>
+            <li><i class="fas fa-check-circle"></i> <span data-translate="skill2">Communication claire et efficace</span></li>
+            <li><i class="fas fa-check-circle"></i> <span data-translate="skill3">Utilisation de logiciels CRM</span></li>
+          </ul>
+          <div class="skill-level">
+            <div class="level-bar">
+              <div class="level-progress" style="width: 90%"></div>
+            </div>
+            <span class="level-text">Expert</span>
+          </div>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">
+              <i class="fas fa-bullhorn"></i>
+            </div>
+            <h3 data-translate="digital_marketing">Marketing Digital</h3>
+          </div>
+          <ul class="skill-list">
+            <li><i class="fas fa-check-circle"></i> <span data-translate="skill4">Création et gestion de campagnes sur les réseaux sociaux</span></li>
+            <li><i class="fas fa-check-circle"></i> <span data-translate="skill5">SEO & marketing de contenu</span></li>
+            <li><i class="fas fa-check-circle"></i> <span data-translate="skill6">Email marketing & analytics</span></li>
+          </ul>
+          <div class="skill-level">
+            <div class="level-bar">
+              <div class="level-progress" style="width: 85%"></div>
+            </div>
+            <span class="level-text">Avancé</span>
+          </div>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3 data-translate="web_dev">Développement Web</h3>
+          </div>
+          <ul class="skill-list">
+            <li><i class="fas fa-check-circle"></i> HTML, CSS, JavaScript</li>
+            <li><i class="fas fa-check-circle"></i> PHP (Bases)</li>
+            <li><i class="fas fa-check-circle"></i> <span data-translate="skill7">Design responsive & mobile</span></li>
+            <li><i class="fas fa-check-circle"></i> <span data-translate="skill8">Création de sites vitrine & e-commerce</span></li>
+          </ul>
+          <div class="skill-level">
+            <div class="level-bar">
+              <div class="level-progress" style="width: 80%"></div>
+            </div>
+            <span class="level-text">Intermédiaire</span>
+          </div>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">
+              <i class="fas fa-comments"></i>
+            </div>
+            <h3 data-translate="communication">Communication</h3>
+          </div>
+          <ul class="skill-list">
+            <li><i class="fas fa-check-circle"></i> <span data-translate="skill9">Communication interpersonnelle efficace</span></li>
+            <li><i class="fas fa-check-circle"></i> <span data-translate="skill10">Rédaction professionnelle</span></li>
+            <li><i class="fas fa-check-circle"></i> <span data-translate="skill11">Techniques de présentation</span></li>
+            <li><i class="fas fa-check-circle"></i> <span data-translate="skill12">Communication d'équipe</span></li>
+          </ul>
+          <div class="skill-level">
+            <div class="level-bar">
+              <div class="level-progress" style="width: 88%"></div>
+            </div>
+            <span class="level-text">Avancé</span>
+          </div>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">
+              <i class="fas fa-language"></i>
+            </div>
+            <h3 data-translate="languages">Langues</h3>
+          </div>
+          <ul class="skill-list">
+            <li><i class="fas fa-check-circle"></i> <span data-translate="lang1">Créole haïtien (langue maternelle)</span></li>
+            <li><i class="fas fa-check-circle"></i> <span data-translate="lang2">Français (avancé)</span></li>
+            <li><i class="fas fa-check-circle"></i> <span data-translate="lang3">Anglais (conversationnel)</span></li>
+            <li><i class="fas fa-check-circle"></i> <span data-translate="lang4">Espagnol (notions)</span></li>
+          </ul>
+          <div class="skill-level">
+            <div class="level-bar">
+              <div class="level-progress" style="width: 95%"></div>
+            </div>
+            <span class="level-text">Multilingue</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Prêt à collaborer ?</h2>
+        <p>Disponible pour des projets innovants et des opportunités professionnelles</p>
+        <div class="cta-buttons">
+          <a href="https://drive.google.com/file/d/1w2AvECKNpr7FsQuFCtUTnDpzAepvKxzH/view?usp=drivesdk" 
+             download 
+             class="btn btn-primary btn-large">
+            <i class="fas fa-download"></i>
+            <span data-translate="download_cv">Télécharger mon CV</span>
+          </a>
+          <a href="https://wa.me/50943895284" 
+             target="_blank" 
+             class="btn btn-outline btn-large">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" data-translate="contact_me">
+          <span class="title-number">03</span>
+          Contactez-moi
+        </h2>
+        <p class="section-subtitle">Discutons de votre projet</p>
+      </div>
+      
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h3>Email</h3>
+            <p>emmanuel.selicour.2002@email.com</p>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <h3>Téléphone</h3>
+            <p>+1 510-281-7365<br>+1 778-764-0542</p>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h3>Localisation</h3>
+            <p>Haïti | Disponible à distance</p>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <h3>Disponibilité</h3>
+            <p>Lundi - Vendredi<br>9h00 - 18h00</p>
+          </div>
+        </div>
+        
+        <div class="contact-form-container">
+          <form class="contact-form" action="https://formspree.io/f/xjkonona" method="POST">
+            <input type="hidden" name="_subject" value="Nouveau message depuis le portfolio">
+            
+            <div class="form-group">
+              <label for="name" data-translate="form_name">Votre nom</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email" data-translate="form_email">Votre email</label>
+              <input type="email" id="email" name="_replyto" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="message" data-translate="form_message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            
+            <input type="hidden" name="_next" value="https://emmanuelselicour.onrender.com/">
+            
+            <button type="submit" class="btn btn-primary btn-block" data-translate="form_send">
+              <i class="fas fa-paper-plane"></i>
+              Envoyer le message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="footer-logo">ES</div>
+          <div class="footer-info">
+            <h3>Emmanuel Selicour</h3>
+            <p>Digital Specialist & Multilingual Professional</p>
+          </div>
+        </div>
+        
+        <div class="footer-social">
+          <a href="https://wa.me/50943895284" class="social-link" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="mailto:emmanuel.selicour.2002@email.com" class="social-link">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+        
+        <div class="footer-copyright">
+          <p><strong data-translate="footer_dev">SITE DÉVELOPPÉ PAR : TRUE MANNO</strong></p>
+          <p class="copyright">© 2024 Emmanuel Selicour. Tous droits réservés.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/50943895284" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="main.js"></script>
+</body>
+</html>
