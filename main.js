@@ -1,4 +1,4 @@
-// main.js
+// main.js - Code complet corrigé pour le partage sur tous les réseaux sociaux
 
 // Translations object with Spanish added
 const translations = {
@@ -260,6 +260,9 @@ function init() {
   
   // Initialize form
   initForm();
+  
+  // Gestion du cache des réseaux sociaux
+  setupSocialMediaCache();
   
   // Hide loader after initialization
   setTimeout(() => {
@@ -724,6 +727,163 @@ function handleResize() {
   }
 }
 
+// SOCIAL MEDIA SHARING FUNCTIONS - NOUVEAU CODE IMPORTANT
+function setupSocialMediaCache() {
+  // Gestion du cache pour tous les réseaux sociaux
+  const timestamp = new Date().getTime();
+  const cacheBuster = `?v=${timestamp}`;
+  
+  // Force la mise à jour des meta tags Open Graph et Twitter
+  updateMetaTagsForSharing();
+  
+  // Détection du partage depuis les réseaux sociaux
+  detectSocialMediaReferrer();
+}
+
+function updateMetaTagsForSharing() {
+  // Création dynamique des meta tags si nécessaire
+  const head = document.head;
+  
+  // Liste des meta tags essentiels pour tous les réseaux sociaux
+  const essentialMetaTags = [
+    // Open Graph (Facebook, WhatsApp, LinkedIn, etc.)
+    { property: 'og:title', content: 'Emmanuel Selicour | Digital Specialist' },
+    { property: 'og:description', content: 'Portfolio Emmanuel Selicour - Digital Specialist, Centre d\'Appel, Marketing, Informatique. Solutions digitales innovantes et services multilingues.' },
+    { property: 'og:image', content: `https://emmanuel-selicour.online/logo-ES.jpg?v=${Date.now()}` },
+    { property: 'og:image:width', content: '1200' },
+    { property: 'og:image:height', content: '630' },
+    { property: 'og:image:type', content: 'image/jpeg' },
+    { property: 'og:url', content: 'https://emmanuel-selicour.online' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:site_name', content: 'Emmanuel Selicour Portfolio' },
+    { property: 'og:locale', content: 'fr_FR' },
+    
+    // Twitter Card
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: 'Emmanuel Selicour | Digital Specialist' },
+    { name: 'twitter:description', content: 'Portfolio Emmanuel Selicour - Digital Specialist, Centre d\'Appel, Marketing, Informatique' },
+    { name: 'twitter:image', content: `https://emmanuel-selicour.online/logo-ES.jpg?v=${Date.now()}` },
+    { name: 'twitter:site', content: '@emmanuel_selicour' },
+    
+    // Autres meta tags
+    { name: 'description', content: 'Portfolio Emmanuel Selicour - Digital Specialist, Centre d\'Appel, Marketing, Informatique | Solutions digitales innovantes et services multilingues.' }
+  ];
+  
+  // Vérifie et met à jour chaque meta tag
+  essentialMetaTags.forEach(tagInfo => {
+    let selector = '';
+    if (tagInfo.property) {
+      selector = `meta[property="${tagInfo.property}"]`;
+    } else if (tagInfo.name) {
+      selector = `meta[name="${tagInfo.name}"]`;
+    }
+    
+    let metaTag = document.querySelector(selector);
+    
+    if (metaTag) {
+      // Met à jour le tag existant
+      metaTag.setAttribute('content', tagInfo.content);
+    } else {
+      // Crée un nouveau tag s'il n'existe pas
+      metaTag = document.createElement('meta');
+      if (tagInfo.property) {
+        metaTag.setAttribute('property', tagInfo.property);
+      } else if (tagInfo.name) {
+        metaTag.setAttribute('name', tagInfo.name);
+      }
+      metaTag.setAttribute('content', tagInfo.content);
+      head.appendChild(metaTag);
+    }
+  });
+  
+  // Ajoute un paramètre de cache buster à l'image pour forcer le rafraîchissement
+  const ogImage = document.querySelector('meta[property="og:image"]');
+  const twitterImage = document.querySelector('meta[name="twitter:image"]');
+  
+  if (ogImage) {
+    const currentOgImage = ogImage.getAttribute('content');
+    if (!currentOgImage.includes('?')) {
+      ogImage.setAttribute('content', currentOgImage + `?v=${Date.now()}`);
+    }
+  }
+  
+  if (twitterImage) {
+    const currentTwitterImage = twitterImage.getAttribute('content');
+    if (!currentTwitterImage.includes('?')) {
+      twitterImage.setAttribute('content', currentTwitterImage + `?v=${Date.now()}`);
+    }
+  }
+}
+
+function detectSocialMediaReferrer() {
+  // Détecte si l'utilisateur vient d'un réseau social
+  const referrer = document.referrer;
+  const socialMediaDomains = [
+    'whatsapp',
+    'facebook',
+    'twitter',
+    'linkedin',
+    'telegram',
+    'messenger',
+    'instagram',
+    'pinterest'
+  ];
+  
+  const isFromSocialMedia = socialMediaDomains.some(domain => 
+    referrer.toLowerCase().includes(domain)
+  );
+  
+  if (isFromSocialMedia) {
+    // Force le rafraîchissement des meta tags
+    updateMetaTagsForSharing();
+    
+    // Log pour le débogage
+    console.log('Utilisateur provenant d\'un réseau social:', referrer);
+  }
+}
+
+// Fonction pour rafraîchir manuellement le cache des réseaux sociaux
+function refreshSocialMediaCache() {
+  // Ajoute un timestamp unique pour briser le cache
+  const timestamp = Date.now();
+  
+  // Met à jour toutes les images avec un cache buster
+  const images = document.querySelectorAll('img[src*="emmanuel-selicour.online"]');
+  images.forEach(img => {
+    if (!img.src.includes('?')) {
+      img.src = img.src + `?v=${timestamp}`;
+    }
+  });
+  
+  // Met à jour les meta tags
+  updateMetaTagsForSharing();
+  
+  // Force le rafraîchissement des crawlers
+  forceCrawlerRefresh();
+}
+
+function forceCrawlerRefresh() {
+  // Appelle les APIs de rafraîchissement des crawlers
+  const url = encodeURIComponent('https://emmanuel-selicour.online');
+  
+  // Facebook/Instagram
+  fetch(`https://graph.facebook.com/?id=${url}&scrape=true&method=post`)
+    .then(response => console.log('Facebook cache refreshed:', response.ok))
+    .catch(err => console.warn('Facebook refresh error:', err));
+    
+  // LinkedIn (ne peut pas être rafraîchi via API sans token)
+  console.log('Pour LinkedIn, utilisez: https://www.linkedin.com/post-inspector/inspect/https:emmanuel-selicour.online');
+  
+  // Twitter
+  console.log('Pour Twitter, utilisez: https://cards-dev.twitter.com/validator');
+}
+
+// Ajoute un bouton de débogage en développement
+if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+  window.refreshSocialCache = refreshSocialMediaCache;
+  console.log('Fonction de rafraîchissement disponible: refreshSocialCache()');
+}
+
 // Utility Functions
 function debounce(func, wait) {
   let timeout;
@@ -737,10 +897,47 @@ function debounce(func, wait) {
   };
 }
 
+// Gestion des images avec fallback
+document.addEventListener('error', function(e) {
+  if (e.target.tagName === 'IMG') {
+    console.warn('Image failed to load:', e.target.src);
+    // Fallback pour les images critiques
+    if (e.target.classList.contains('profile-image')) {
+      e.target.src = 'https://via.placeholder.com/400x500/2A4365/FFFFFF?text=Emmanuel+Selicour';
+    }
+  }
+}, true);
+
+// Performance optimization: Lazy load images
+document.addEventListener('DOMContentLoaded', function() {
+  const images = document.querySelectorAll('img[data-src]');
+  
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+          imageObserver.unobserve(img);
+        }
+      });
+    });
+    
+    images.forEach(img => imageObserver.observe(img));
+  } else {
+    // Fallback for older browsers
+    images.forEach(img => {
+      img.src = img.dataset.src;
+      img.removeAttribute('data-src');
+    });
+  }
+});
+
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', init);
 
-// Add CSS for animations
+// Ajoute CSS pour les animations
 const style = document.createElement('style');
 style.textContent = `
   .about-card, .skill-card, .contact-card {
@@ -805,40 +1002,41 @@ style.textContent = `
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+  
+  /* Cache refresh indicator */
+  .cache-refresh-btn {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+  
+  .cache-refresh-btn:hover {
+    opacity: 1;
+  }
 `;
 document.head.appendChild(style);
 
-// Add error handling for missing images
-document.addEventListener('error', function(e) {
-  if (e.target.tagName === 'IMG') {
-    console.warn('Image failed to load:', e.target.src);
-    // You could set a placeholder image here
-    // e.target.src = 'placeholder.jpg';
-  }
-}, true);
-
-// Performance optimization: Lazy load images
-document.addEventListener('DOMContentLoaded', function() {
-  const images = document.querySelectorAll('img[data-src]');
-  
-  if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          img.src = img.dataset.src;
-          img.removeAttribute('data-src');
-          imageObserver.unobserve(img);
-        }
-      });
-    });
-    
-    images.forEach(img => imageObserver.observe(img));
-  } else {
-    // Fallback for older browsers
-    images.forEach(img => {
-      img.src = img.dataset.src;
-      img.removeAttribute('data-src');
-    });
-  }
-});
+// Crée un bouton de rafraîchissement du cache en développement
+if (window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1')) {
+  const refreshBtn = document.createElement('button');
+  refreshBtn.className = 'cache-refresh-btn';
+  refreshBtn.innerHTML = '🔄';
+  refreshBtn.title = 'Rafraîchir le cache des réseaux sociaux';
+  refreshBtn.onclick = refreshSocialMediaCache;
+  document.body.appendChild(refreshBtn);
+      }
