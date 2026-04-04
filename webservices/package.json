@@ -1,0 +1,17 @@
+{
+  "name": "es-company-webservices",
+  "version": "1.0.0",
+  "description": "E.S Company - Services de création de sites web",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6",
+    "bcryptjs": "^2.4.3",
+    "express-session": "^1.17.3",
+    "nodemailer": "^6.9.7",
+    "express-rate-limit": "^7.1.5"
+  }
+}
