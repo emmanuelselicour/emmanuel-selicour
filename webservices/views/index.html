@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E.S Company | Création de sites web professionnels</title>
+    <meta name="description" content="Créez votre site web professionnel avec E.S Company. Solutions sur mesure pour booster votre business en ligne. Sites modernes, responsives et optimisés SEO.">
+    <meta name="keywords" content="création site web, site professionnel, développement web, E.S Company, Emmanuel Selicour">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="E.S Company | Création de sites web professionnels">
+    <meta property="og:description" content="Transformez votre présence en ligne avec un site web professionnel. Devis gratuit, support personnalisé.">
+    <meta property="og:image" content="https://i.postimg.cc/Pq9DZ0jn/file-000000001f3471fda269be0d033dc40a.png">
+    <meta property="og:url" content="https://webservices.emmanuel-selicour.online">
+    <meta property="og:type" content="website">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
+    
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #0066FF 0%, #00ccff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.15);
+        }
+        
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeUp { animation: fadeUp 0.6s ease-out forwards; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .float { animation: float 3s ease-in-out infinite; }
+        
+        .countdown-number {
+            background: linear-gradient(135deg, #0066FF, #00ccff);
+            color: white;
+            border-radius: 12px;
+            padding: 15px 20px;
+            text-align: center;
+            min-width: 80px;
+        }
+        
+        .progress-bar-fill {
+            background: linear-gradient(90deg, #0066FF, #00ccff);
+            height: 8px;
+            border-radius: 4px;
+            transition: width 1s ease-out;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        
+        @media (max-width: 768px) {
+            .countdown-number { padding: 10px 12px; min-width: 60px; }
+            .countdown-number span { font-size: 20px; }
+        }
+    </style>
+</head>
+<body class="bg-white">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md shadow-sm py-4">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <img src="https://i.postimg.cc/Pq9DZ0jn/file-000000001f3471fda269be0d033dc40a.png" alt="E.S Company Logo" class="w-10 h-10 rounded-lg">
+                    <span class="font-bold text-xl gradient-text">E.S Company</span>
+                </div>
+                
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="/" class="text-gray-600 hover:text-[#0066FF] transition font-medium">Accueil</a>
+                    <a href="/services" class="text-gray-600 hover:text-[#0066FF] transition font-medium">Services</a>
+                    <a href="/portfolio" class="text-gray-600 hover:text-[#0066FF] transition font-medium">Portfolio</a>
+                    <a href="/contact" class="text-gray-600 hover:text-[#0066FF] transition font-medium">Contact</a>
+                    <a href="https://wa.me/15102817365" target="_blank" class="px-5 py-2 bg-[#25D366] text-white rounded-full font-medium hover:bg-[#20b859] transition shadow-lg">
+                        <i class="fab fa-whatsapp mr-2"></i>WhatsApp
+                    </a>
+                </div>
+                
+                <button id="mobileMenuBtn" class="md:hidden w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
+                    <i class="fas fa-bars text-gray-600"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed top-0 right-0 w-64 h-full bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-300">
+        <div class="p-6">
+            <button id="closeMenu" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="flex flex-col gap-4 mt-12">
+                <a href="/" class="text-gray-600 hover:text-[#0066FF] py-2">Accueil</a>
+                <a href="/services" class="text-gray-600 hover:text-[#0066FF] py-2">Services</a>
+                <a href="/portfolio" class="text-gray-600 hover:text-[#0066FF] py-2">Portfolio</a>
+                <a href="/contact" class="text-gray-600 hover:text-[#0066FF] py-2">Contact</a>
+                <a href="https://wa.me/15102817365" class="px-5 py-2 bg-[#25D366] text-white rounded-full text-center">WhatsApp</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center pt-20 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-[#0066FF]/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-[#00ccff]/10 rounded-full blur-3xl"></div>
+        
+        <div class="container mx-auto px-4 md:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="flex-1 text-center md:text-left animate-fadeUp">
+                    <div class="inline-block px-4 py-1 bg-[#0066FF]/10 rounded-full mb-6">
+                        <span class="text-[#0066FF] text-sm font-medium">🔥 Spécialiste en création de sites web</span>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+                        Votre site web <br>
+                        <span class="gradient-text">professionnel</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8">
+                        Transformez votre présence en ligne avec un site moderne, rapide et optimisé pour convertir vos visiteurs en clients.
+                    </p>
+                    <div class="flex gap-4 justify-center md:justify-start">
+                        <a href="#offers" class="px-6 py-3 bg-[#0066FF] text-white rounded-full font-medium hover:bg-[#0052cc] transition shadow-lg">
+                            <i class="fas fa-rocket mr-2"></i>Voir les offres
+                        </a>
+                        <a href="https://wa.me/15102817365" target="_blank" class="px-6 py-3 border-2 border-[#0066FF] text-[#0066FF] rounded-full font-medium hover:bg-[#0066FF] hover:text-white transition">
+                            <i class="fab fa-whatsapp mr-2"></i>Devis gratuit
+                        </a>
+                    </div>
+                </div>
+                <div class="flex-1 flex justify-center">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-[#0066FF] to-[#00ccff] rounded-2xl blur-2xl opacity-30"></div>
+                        <img src="https://i.postimg.cc/8CKHYyg2/Air-Brush-20220117200715.jpg" alt="Emmanuel Selicour" class="relative w-80 h-80 md:w-96 md:h-96 rounded-2xl object-cover shadow-2xl border-4 border-white">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Countdown Section -->
+    <section class="py-12 bg-gradient-to-r from-[#0066FF] to-[#00ccff] text-white">
+        <div class="container mx-auto px-4 md:px-8 text-center">
+            <p class="text-lg mb-4">🔥 Special Launch Offer – Limited Spots Available</p>
+            <div id="countdown" class="flex justify-center gap-4 md:gap-8">
+                <div class="countdown-number"><span id="days" class="text-3xl md:text-4xl font-bold">00</span><br>Jours</div>
+                <div class="countdown-number"><span id="hours" class="text-3xl md:text-4xl font-bold">00</span><br>Heures</div>
+                <div class="countdown-number"><span id="minutes" class="text-3xl md:text-4xl font-bold">00</span><br>Minutes</div>
+                <div class="countdown-number"><span id="seconds" class="text-3xl md:text-4xl font-bold">00</span><br>Secondes</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Problem Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Vous rencontrez ces problèmes ?</h2>
+                <div class="w-20 h-1 bg-[#0066FF] mx-auto rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chart-line text-3xl text-red-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Peu de clients</h3>
+                    <p class="text-gray-600">Vous avez du mal à attirer de nouveaux clients et à faire croître votre business ?</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-eye-slash text-3xl text-orange-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Pas de visibilité</h3>
+                    <p class="text-gray-600">Personne ne vous trouve en ligne, vous êtes invisible sur les moteurs de recherche ?</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-3xl text-purple-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Trop de dépendance</h3>
+                    <p class="text-gray-600">Votre activité dépend uniquement de WhatsApp, vous manquez de crédibilité ?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Solution Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">La solution : un site web professionnel</h2>
+                <div class="w-20 h-1 bg-[#0066FF] mx-auto rounded-full"></div>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Un site web moderne transforme votre activité en machine à générer des clients 24h/24</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-card rounded-2xl p-6 text-center hover-scale">
+                    <div class="w-16 h-16 bg-[#0066FF]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-24-7 text-2xl text-[#0066FF]"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Disponible 24h/24</h3>
+                    <p class="text-gray-500 text-sm">Votre vitrine ouverte jour et nuit</p>
+                </div>
+                <div class="glass-card rounded-2xl p-6 text-center hover-scale">
+                    <div class="w-16 h-16 bg-[#0066FF]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-globe text-2xl text-[#0066FF]"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Visibilité mondiale</h3>
+                    <p class="text-gray-500 text-sm">Atteignez des milliers de clients potentiels</p>
+                </div>
+                <div class="glass-card rounded-2xl p-6 text-center hover-scale">
+                    <div class="w-16 h-16 bg-[#0066FF]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-robot text-2xl text-[#0066FF]"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Automatisation</h3>
+                    <p class="text-gray-500 text-sm">Collectez des leads automatiquement</p>
+                </div>
+                <div class="glass-card rounded-2xl p-6 text-center hover-scale">
+                    <div class="w-16 h-16 bg-[#0066FF]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chart-line text-2xl text-[#0066FF]"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Croissance garantie</h3>
+                    <p class="text-gray-500 text-sm">Boostez vos ventes de +200%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Barème Section (IMPORTANT) -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">📊 L'impact d'un site web sur votre business</h2>
+                <div class="w-20 h-1 bg-[#0066FF] mx-auto rounded-full"></div>
+                <p class="text-gray-600 mt-4">Comparez les résultats avant et après un site professionnel</p>
+            </div>
+            
+            <!-- Croissance économique -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold mb-6 text-center">📈 Croissance économique</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">Sans site web</span>
+                            <span class="text-red-500">0 à 5 clients/semaine</span>
+                        </div>
+                        <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                            <div class="h-full bg-red-500 rounded-full" style="width: 10%"></div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">Avec site web</span>
+                            <span class="text-green-500">5 à 20+ clients/semaine</span>
+                        </div>
+                        <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                            <div class="h-full bg-green-500 rounded-full" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Acquisition clients -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold mb-6 text-center">🧲 Acquisition clients</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">WhatsApp seul</span>
+                            <span class="text-orange-500">Dépendant, limité</span>
+                        </div>
+                        <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                            <div class="h-full bg-orange-500 rounded-full" style="width: 25%"></div>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-2">⏰ Uniquement quand vous êtes actif</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">Site + WhatsApp</span>
+                            <span class="text-green-500">Automatique 24h/24</span>
+                        </div>
+                        <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                            <div class="h-full bg-green-500 rounded-full" style="width: 95%"></div>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-2">⚡ Collecte de leads même la nuit</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Niveaux de trafic -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6 text-center">🌍 Évolution du trafic</h3>
+                <div class="bg-white rounded-2xl p-6 shadow-lg overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="border-b">
+                                <th class="text-left py-3 px-4">Niveau</th>
+                                <th class="text-left py-3 px-4">Visiteurs/mois</th>
+                                <th class="text-left py-3 px-4">Signification</th>
+                                <th class="text-left py-3 px-4">Progression</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b"><td class="py-3 px-4">🔴 Début</td><td class="py-3 px-4">0 – 50</td><td class="py-3 px-4">Peu visible</td><td class="py-3 px-4"><div class="h-2 bg-gray-200 rounded-full w-12"><div class="h-full bg-red-500 rounded-full" style="width: 5%"></div></div></td></tr>
+                            <tr class="border-b"><td class="py-3 px-4">🟠 Croissance</td><td class="py-3 px-4">50 – 200</td><td class="py-3 px-4">Commence à attirer</td><td class="py-3 px-4"><div class="h-2 bg-gray-200 rounded-full w-12"><div class="h-full bg-orange-500 rounded-full" style="width: 20%"></div></div></td></tr>
+                            <tr class="border-b"><td class="py-3 px-4">🟡 Actif</td><td class="py-3 px-4">200 – 1000</td><td class="py-3 px-4">Génère clients</td><td class="py-3 px-4"><div class="h-2 bg-gray-200 rounded-full w-12"><div class="h-full bg-yellow-500 rounded-full" style="width: 50%"></div></div></td></tr>
+                            <tr class="border-b"><td class="py-3 px-4">🟢 Fort</td><td class="py-3 px-4">1000 – 5000</td><td class="py-3 px-4">Business solide</td><td class="py-3 px-4"><div class="h-2 bg-gray-200 rounded-full w-12"><div class="h-full bg-green-500 rounded-full" style="width: 75%"></div></div></td></tr>
+                            <tr><td class="py-3 px-4">🔵 Dominant</td><td class="py-3 px-4">5000+</td><td class="py-3 px-4">Machine à clients</td><td class="py-3 px-4"><div class="h-2 bg-gray-200 rounded-full w-12"><div class="h-full bg-blue-500 rounded-full" style="width: 100%"></div></div></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Offers Section -->
+    <section id="offers" class="py-20">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">💰 Nos offres</h2>
+                <div class="w-20 h-1 bg-[#0066FF] mx-auto rounded-full"></div>
+                <p class="text-gray-600 mt-4">Des packs adaptés à tous les besoins et budgets</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Starter -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover-scale">
+                    <div class="p-6 text-center border-b">
+                        <h3 class="text-2xl font-bold">Starter</h3>
+                        <div class="mt-4">
+                            <span class="text-4xl font-bold">$99.99</span>
+                            <span class="text-gray-500">/ unique</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Site vitrine (1-3 pages)</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Design responsive</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Formulaire de contact</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Intégration WhatsApp</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Livraison sous 7 jours</li>
+                        </ul>
+                        <a href="https://wa.me/15102817365?text=Je%20suis%20intéressé%20par%20l'offre%20Starter%20à%2099.99%24" target="_blank" class="block text-center mt-6 px-4 py-2 border-2 border-[#0066FF] text-[#0066FF] rounded-full hover:bg-[#0066FF] hover:text-white transition">Réserver</a>
+                    </div>
+                </div>
+                
+                <!-- Pro -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover-scale border-2 border-[#0066FF] relative">
+                    <div class="absolute top-0 right-0 bg-[#0066FF] text-white px-3 py-1 rounded-bl-lg text-sm">Populaire</div>
+                    <div class="p-6 text-center border-b bg-gradient-to-r from-[#0066FF]/5 to-[#00ccff]/5">
+                        <h3 class="text-2xl font-bold">Pro</h3>
+                        <div class="mt-4">
+                            <span class="text-4xl font-bold">$149.99</span>
+                            <span class="text-gray-500">/ unique</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Site complet (5-7 pages)</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Design responsive + animations</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Blog intégré</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Optimisation SEO basique</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Formulaire + Newsletter</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Livraison sous 14 jours</li>
+                        </ul>
+                        <a href="https://wa.me/15102817365?text=Je%20suis%20intéressé%20par%20l'offre%20Pro%20à%20149.99%24" target="_blank" class="block text-center mt-6 px-4 py-2 bg-[#0066FF] text-white rounded-full hover:bg-[#0052cc] transition">Réserver</a>
+                    </div>
+                </div>
+                
+                <!-- Premium -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover-scale">
+                    <div class="p-6 text-center border-b">
+                        <h3 class="text-2xl font-bold">Premium</h3>
+                        <div class="mt-4">
+                            <span class="text-4xl font-bold">$199.99</span>
+                            <span class="text-gray-500">/ unique</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Site e-commerce / catalogue</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Design sur mesure premium</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> SEO avancé</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Dashboard admin personnalisé</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Formation incluse</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Livraison sous 21 jours</li>
+                        </ul>
+                        <a href="https://wa.me/15102817365?text=Je%20suis%20intéressé%20par%20l'offre%20Premium%20à%20199.99%24" target="_blank" class="block text-center mt-6 px-4 py-2 border-2 border-[#0066FF] text-[#0066FF] rounded-full hover:bg-[#0066FF] hover:text-white transition">Réserver</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Monthly subscriptions -->
+            <div class="mt-12">
+                <h3 class="text-2xl font-bold text-center mb-6">📅 Abonnements mensuels (maintenance & support)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gray-50 rounded-xl p-4 text-center"><span class="font-bold">Basic</span><br>$15/mois<br><span class="text-sm text-gray-500">Hébergement + sécurité</span></div>
+                    <div class="bg-gray-50 rounded-xl p-4 text-center"><span class="font-bold">Pro</span><br>$35/mois<br><span class="text-sm text-gray-500">+ Support prioritaire + backups</span></div>
+                    <div class="bg-gray-50 rounded-xl p-4 text-center"><span class="font-bold">Business</span><br>$75/mois<br><span class="text-sm text-gray-500">+ Marketing + SEO mensuel</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Why me Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Pourquoi choisir E.S Company ?</h2>
+                <div class="w-20 h-1 bg-[#0066FF] mx-auto rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center"><i class="fas fa-clock text-4xl text-[#0066FF] mb-4"></i><h3 class="font-bold text-xl mb-2">Rapidité</h3><p class="text-gray-600">Site livré en 7 à 21 jours selon le pack</p></div>
+                <div class="text-center"><i class="fas fa-hand-holding-heart text-4xl text-[#0066FF] mb-4"></i><h3 class="font-bold text-xl mb-2">Simplicité</h3><p class="text-gray-600">Je vous accompagne étape par étape</p></div>
+                <div class="text-center"><i class="fas fa-chart-line text-4xl text-[#0066FF] mb-4"></i><h3 class="font-bold text-xl mb-2">Résultats</h3><p class="text-gray-600">+200% de clients en moyenne</p></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Concrete Results -->
+    <section class="py-20">
+        <div class="container mx-auto px-4 md:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">🎯 Résultats concrets</h2>
+            <div class="w-20 h-1 bg-[#0066FF] mx-auto rounded-full mb-8"></div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+                <div class="bg-gradient-to-r from-[#0066FF] to-[#00ccff] text-white rounded-2xl p-6"><i class="fas fa-users text-3xl mb-3"></i><div class="text-3xl font-bold">3 clients</div><div>en 2 semaines</div></div>
+                <div class="bg-gradient-to-r from-[#0066FF] to-[#00ccff] text-white rounded-2xl p-6"><i class="fas fa-comment-dots text-3xl mb-3"></i><div class="text-3xl font-bold">48h</div><div>premier message reçu</div></div>
+                <div class="bg-gradient-to-r from-[#0066FF] to-[#00ccff] text-white rounded-2xl p-6"><i class="fas fa-trophy text-3xl mb-3"></i><div class="text-3xl font-bold">100%</div><div>clients satisfaits</div></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Process Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Comment ça marche ?</h2>
+                <div class="w-20 h-1 bg-[#0066FF] mx-auto rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center"><div class="w-20 h-20 bg-[#0066FF] text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div><h3 class="font-bold text-xl mb-2">Appel découverte</h3><p class="text-gray-600">On discute de vos besoins et objectifs</p></div>
+                <div class="text-center"><div class="w-20 h-20 bg-[#0066FF] text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div><h3 class="font-bold text-xl mb-2">Création & Design</h3><p class="text-gray-600">Je crée votre site et vous validez</p></div>
+                <div class="text-center"><div class="w-20 h-20 bg-[#0066FF] text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div><h3 class="font-bold text-xl mb-2">Lancement</h3><p class="text-gray-600">Mise en ligne et formation incluse</p></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-4 md:px-8 max-w-3xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">❓ Foire aux questions</h2>
+                <div class="w-20 h-1 bg-[#0066FF] mx-auto rounded-full"></div>
+            </div>
+            <div class="space-y-4">
+                <div class="border rounded-xl p-4"><button class="faq-question w-full text-left font-bold flex justify-between">Combien de temps pour créer mon site ?<i class="fas fa-chevron-down"></i></button><div class="faq-answer hidden mt-2 text-gray-600">Entre 7 et 21 jours selon le pack choisi.</div></div>
+                <div class="border rounded-xl p-4"><button class="faq-question w-full text-left font-bold flex justify-between">Est-ce que je peux modifier mon site moi-même ?<i class="fas fa-chevron-down"></i></button><div class="faq-answer hidden mt-2 text-gray-600">Oui, je vous forme à l'utilisation du site.</div></div>
+                <div class="border rounded-xl p-4"><button class="faq-question w-full text-left font-bold flex justify-between">Quels sont les frais d'hébergement ?<i class="fas fa-chevron-down"></i></button><div class="faq-answer hidden mt-2 text-gray-600">À partir de $15/mois selon l'abonnement choisi.</div></div>
+                <div class="border rounded-xl p-4"><button class="faq-question w-full text-left font-bold flex justify-between">Proposez-vous un service après-vente ?<i class="fas fa-chevron-down"></i></button><div class="faq-answer hidden mt-2 text-gray-600">Oui, support inclus dans les abonnements mensuels.</div></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter Section -->
+    <section class="py-20 bg-gradient-to-r from-[#0066FF] to-[#00ccff] text-white">
+        <div class="container mx-auto px-4 md:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-4">📧 Recevez notre checklist gratuite</h2>
+            <p class="mb-6">"Comment avoir plus de clients en ligne" - Valeur $49 offerte</p>
+            <form id="checklistForm" class="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
+                <input type="email" id="checklistEmail" placeholder="Votre email" required class="flex-1 px-4 py-3 rounded-full text-gray-900">
+                <button type="submit" class="px-6 py-3 bg-white text-[#0066FF] rounded-full font-bold hover:bg-gray-100 transition">Recevoir →</button>
+            </form>
+            <p id="checklistMessage" class="text-sm mt-4"></p>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4 md:px-8 text-center">
+            <img src="https://i.postimg.cc/Pq9DZ0jn/file-000000001f3471fda269be0d033dc40a.png" alt="Logo" class="w-16 mx-auto mb-4">
+            <p class="text-gray-400 mb-4">E.S Company - Création de sites web professionnels</p>
+            <div class="flex justify-center gap-4 mb-6">
+                <a href="https://wa.me/15102817365" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#25D366] transition"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:Emmanuelselicour.2002@gmail.com" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#0066FF] transition"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p class="text-gray-500 text-sm">© 2024 E.S Company. Tous droits réservés.</p>
+        </div>
+    </footer>
+    
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/15102817365" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+    
+    <script>
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        mobileMenuBtn?.addEventListener('click', () => mobileMenu.classList.add('translate-x-0'));
+        closeMenu?.addEventListener('click', () => mobileMenu.classList.remove('translate-x-0'));
+        
+        // Countdown
+        async function loadCountdown() {
+            try {
+                const res = await fetch('/api/countdown');
+                const data = await res.json();
+                const endDate = new Date(data.endDate);
+                function update() {
+                    const now = new Date();
+                    const diff = endDate - now;
+                    if (diff <= 0) {
+                        document.getElementById('days').textContent = '00';
+                        document.getElementById('hours').textContent = '00';
+                        document.getElementById('minutes').textContent = '00';
+                        document.getElementById('seconds').textContent = '00';
+                        return;
+                    }
+                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((diff % (86400000)) / 3600000);
+                    const minutes = Math.floor((diff % 3600000) / 60000);
+                    const seconds = Math.floor((diff % 60000) / 1000);
+                    document.getElementById('days').textContent = String(days).padStart(2, '0');
+                    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+                }
+                update();
+                setInterval(update, 1000);
+            } catch(e) { console.error(e); }
+        }
+        loadCountdown();
+        
+        // FAQ
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const answer = btn.parentElement.querySelector('.faq-answer');
+                answer.classList.toggle('hidden');
+            });
+        });
+        
+        // Checklist form
+        document.getElementById('checklistForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('checklistEmail').value;
+            const res = await fetch('/api/checklist', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email })
+            });
+            const data = await res.json();
+            const msg = document.getElementById('checklistMessage');
+            if (data.success) {
+                msg.innerHTML = '✅ Checklist envoyée à votre email !';
+                msg.classList.add('text-green-200');
+                window.open(data.pdfUrl, '_blank');
+            } else {
+                msg.innerHTML = '❌ Erreur, réessayez plus tard';
+                msg.classList.add('text-red-200');
+            }
+            setTimeout(() => msg.innerHTML = '', 3000);
+        });
+    </script>
+</body>
+</html>
