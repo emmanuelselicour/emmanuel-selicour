@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | E.S Company</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>* { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
+            <div class="text-center mb-8"><h1 class="text-2xl font-bold">🔐 Admin Login</h1><p class="text-gray-500">Accès réservé</p></div>
+            <form id="loginForm">
+                <div class="mb-4"><input type="email" id="email" placeholder="Email" required class="w-full px-4 py-3 border rounded-xl focus:border-[#0066FF] outline-none"></div>
+                <div class="mb-6"><input type="password" id="password" placeholder="Mot de passe" required class="w-full px-4 py-3 border rounded-xl focus:border-[#0066FF] outline-none"></div>
+                <button type="submit" class="w-full py-3 bg-[#0066FF] text-white rounded-xl font-bold">Se connecter</button>
+                <p id="errorMsg" class="text-red-500 text-sm mt-3 text-center"></p>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const res = await fetch('/admin/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: document.getElementById('email').value, password: document.getElementById('password').value }) });
+            const data = await res.json();
+            if (data.success) window.location.href = '/admin-dashboard';
+            else document.getElementById('errorMsg').textContent = data.error;
+        });
+    </script>
+</body>
+</html>
