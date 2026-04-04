@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Services | E.S Company</title>
+    <meta name="description" content="Découvrez nos services de création de sites web. Packs adaptés à tous les besoins : Starter, Pro, Premium. Devis gratuit.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: linear-gradient(135deg, #0066FF 0%, #00ccff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .hover-scale { transition: transform 0.3s ease; }
+        .hover-scale:hover { transform: translateY(-5px); }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25D366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px; z-index: 100; }
+    </style>
+</head>
+<body class="bg-white">
+    <nav class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md shadow-sm py-4">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-3"><img src="https://i.postimg.cc/Pq9DZ0jn/file-000000001f3471fda269be0d033dc40a.png" class="w-10 h-10 rounded-lg"><span class="font-bold text-xl gradient-text">E.S Company</span></div>
+                <div class="hidden md:flex gap-6"><a href="/" class="text-gray-600 hover:text-[#0066FF]">Accueil</a><a href="/services" class="text-[#0066FF] font-medium">Services</a><a href="/portfolio" class="text-gray-600 hover:text-[#0066FF]">Portfolio</a><a href="/contact" class="text-gray-600 hover:text-[#0066FF]">Contact</a><a href="https://wa.me/15102817365" class="px-5 py-2 bg-[#25D366] text-white rounded-full">WhatsApp</a></div>
+            </div>
+        </div>
+    </nav>
+    
+    <section class="pt-32 pb-20">
+        <div class="container mx-auto px-4 md:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Nos <span class="gradient-text">Services</span></h1>
+            <p class="text-gray-600 max-w-2xl mx-auto">Des solutions sur mesure pour tous les budgets et tous les besoins</p>
+        </div>
+    </section>
+    
+    <section class="py-12">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-xl p-6 hover-scale border"><h3 class="text-2xl font-bold mb-2">Starter</h3><div class="text-3xl font-bold text-[#0066FF] mb-4">$99.99</div><ul class="space-y-2 mb-6"><li><i class="fas fa-check text-green-500 mr-2"></i>Site vitrine (1-3 pages)</li><li><i class="fas fa-check text-green-500 mr-2"></i>Design responsive</li><li><i class="fas fa-check text-green-500 mr-2"></i>Formulaire de contact</li><li><i class="fas fa-check text-green-500 mr-2"></i>Intégration WhatsApp</li></ul><a href="https://wa.me/15102817365?text=Offre%20Starter" class="block text-center py-2 border-2 border-[#0066FF] text-[#0066FF] rounded-full hover:bg-[#0066FF] hover:text-white transition">Réserver</a></div>
+                <div class="bg-white rounded-2xl shadow-xl p-6 hover-scale border-2 border-[#0066FF] relative"><div class="absolute top-0 right-0 bg-[#0066FF] text-white px-3 py-1 rounded-bl-lg text-sm">Populaire</div><h3 class="text-2xl font-bold mb-2">Pro</h3><div class="text-3xl font-bold text-[#0066FF] mb-4">$149.99</div><ul class="space-y-2 mb-6"><li><i class="fas fa-check text-green-500 mr-2"></i>Site complet (5-7 pages)</li><li><i class="fas fa-check text-green-500 mr-2"></i>Design responsive + animations</li><li><i class="fas fa-check text-green-500 mr-2"></i>Blog intégré</li><li><i class="fas fa-check text-green-500 mr-2"></i>Optimisation SEO basique</li><li><i class="fas fa-check text-green-500 mr-2"></i>Newsletter</li></ul><a href="https://wa.me/15102817365?text=Offre%20Pro" class="block text-center py-2 bg-[#0066FF] text-white rounded-full hover:bg-[#0052cc] transition">Réserver</a></div>
+                <div class="bg-white rounded-2xl shadow-xl p-6 hover-scale border"><h3 class="text-2xl font-bold mb-2">Premium</h3><div class="text-3xl font-bold text-[#0066FF] mb-4">$199.99</div><ul class="space-y-2 mb-6"><li><i class="fas fa-check text-green-500 mr-2"></i>Site e-commerce / catalogue</li><li><i class="fas fa-check text-green-500 mr-2"></i>Design sur mesure premium</li><li><i class="fas fa-check text-green-500 mr-2"></i>SEO avancé</li><li><i class="fas fa-check text-green-500 mr-2"></i>Dashboard admin</li><li><i class="fas fa-check text-green-500 mr-2"></i>Formation incluse</li></ul><a href="https://wa.me/15102817365?text=Offre%20Premium" class="block text-center py-2 border-2 border-[#0066FF] text-[#0066FF] rounded-full hover:bg-[#0066FF] hover:text-white transition">Réserver</a></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-8 text-center">
+            <h2 class="text-2xl font-bold mb-6">Abonnements mensuels</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+                <div class="bg-white rounded-xl p-4"><span class="font-bold">Basic</span><br>$15/mois<br><span class="text-sm text-gray-500">Hébergement + sécurité</span></div>
+                <div class="bg-white rounded-xl p-4"><span class="font-bold">Pro</span><br>$35/mois<br><span class="text-sm text-gray-500">Support prioritaire + backups</span></div>
+                <div class="bg-white rounded-xl p-4"><span class="font-bold">Business</span><br>$75/mois<br><span class="text-sm text-gray-500">Marketing + SEO mensuel</span></div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="bg-gray-900 text-white py-12 text-center">
+        <p>© 2024 E.S Company</p>
+    </footer>
+    <a href="https://wa.me/15102817365" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+</body>
+</html>
